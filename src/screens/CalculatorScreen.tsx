@@ -91,6 +91,33 @@ const CalculatorScreen = () => {
     lastOperation.current = Operators.add;
   };
 
+  const calculate = () => {
+    if (beforeNum === '0') return;
+
+    const num1 = Number(num);
+    const num2 = Number(beforeNum);
+
+    switch (lastOperation.current) {
+      case Operators.add:
+        setNum(`${num1 + num2}`);
+        break;
+
+      case Operators.subtract:
+        setNum(`${num2 - num1}`);
+        break;
+
+      case Operators.multiply:
+        setNum(`${num1 * num2}`);
+        break;
+
+      case Operators.divide:
+        num1 !== 0 ? setNum(`${num2 / num1}`) : setNum('Error');
+        break;
+    }
+
+    setBeforeNum('0');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.section}>
@@ -156,7 +183,7 @@ const CalculatorScreen = () => {
           <View style={styles.btnContainer}>
             <BtnCalculator text="0" width action={buildNum} />
             <BtnCalculator text="." action={buildNum} />
-            <BtnCalculator text="=" bgColor="orange" action={cleanUp} />
+            <BtnCalculator text="=" bgColor="orange" action={calculate} />
           </View>
         </View>
       </View>
