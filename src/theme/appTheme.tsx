@@ -10,12 +10,11 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     backgroundColor: '#212121',
+    justifyContent: 'flex-end',
   },
   section: {
     // borderWidth: 2,
     // borderColor: 'green',
-
-    bottom: -200,
   },
 
   text: {

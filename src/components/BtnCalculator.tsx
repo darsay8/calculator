@@ -5,6 +5,7 @@ interface Props {
   color?: ColorType;
   bgColor?: BackgroundType;
   width?: boolean;
+  action: (numText: string) => void;
 }
 
 type ColorType = 'white' | 'black';
@@ -21,9 +22,10 @@ const BtnCalculator = ({
   color = 'white',
   bgColor = 'darkGray',
   width = false,
+  action,
 }: Props) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => action(text)}>
       <View
         style={[
           styles.btn,
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
   },
 
   btnText: {
-    fontSize: 40,
+    fontSize: 32,
     color: '#F1F1F0',
     alignSelf: 'center',
   },
